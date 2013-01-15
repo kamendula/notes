@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>RubyGems Notes &mdash; Development Notes</title>
+    <title>Authlogic Notes &mdash; Development Notes</title>
     
     <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -25,9 +25,8 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="Development Notes" href="../../index.html" />
-    <link rel="up" title="Ruby Development Notes" href="../index.html" />
-    <link rel="next" title="Devise Notes" href="devise.html" />
-    <link rel="prev" title="Rails Logging" href="../logging.html" />
+    <link rel="up" title="RubyGems Notes" href="index.html" />
+    <link rel="prev" title="CanCan Notes" href="cancan.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -44,13 +43,11 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="devise.html" title="Devise Notes"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../logging.html" title="Rails Logging"
+          <a href="cancan.html" title="CanCan Notes"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">Notes</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Ruby Development Notes</a> &raquo;</li> 
+          <li><a href="../index.html" >Ruby Development Notes</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">RubyGems Notes</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,32 +56,23 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="rubygems-notes">
-<h1>RubyGems Notes<a class="headerlink" href="#rubygems-notes" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="devise.html">Devise Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="devise.html#id1">配置</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="cancan.html">CanCan Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cancan.html#resources">Resources</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authlogic.html">Authlogic Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="authlogic.html#usersession-findnil">UserSession.find返回nil的问题</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="authlogic-notes">
+<h1>Authlogic Notes<a class="headerlink" href="#authlogic-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usersession-findnil">
+<h2>UserSession.find返回nil的问题<a class="headerlink" href="#usersession-findnil" title="Permalink to this headline">¶</a></h2>
+<p>创建 <cite>session</cite> 后 <cite>UserSession.find</cite> 一直返回 <cite>nil</cite></p>
+<p>需要</p>
+<div class="highlight-python"><pre>class UserSession &lt; Authlogic::Session::Base
+    before_destroy :reset_persistence_token
+    before_create  :reset_persistence_token
+
+    def reset_persistence_token
+        record.reset_persistence_token
+    end
+end</pre>
 </div>
+<p>参考 <a class="reference external" href="http://stackoverflow.com/questions/2279248/authlogic-and-multiple-sessions-for-the-same-user">http://stackoverflow.com/questions/2279248/authlogic-and-multiple-sessions-for-the-same-user</a></p>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="../../genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="../../search.html"><em>Search Page</em></a></li>
-</ul>
 </div>
 
 
@@ -95,23 +83,24 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">RubyGems Notes</a><ul>
+<li><a class="reference internal" href="#">Authlogic Notes</a><ul>
+<li><a class="reference internal" href="#usersession-findnil">UserSession.find返回nil的问题</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">Ruby Development Notes</a><ul>
-      <li>Previous: <a href="../logging.html" title="previous chapter">Rails Logging</a></li>
-      <li>Next: <a href="devise.html" title="next chapter">Devise Notes</a></li>
+  <li><a href="index.html">RubyGems Notes</a><ul>
+      <li>Previous: <a href="cancan.html" title="previous chapter">CanCan Notes</a></li>
+  </ul></li>
   </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/ruby/rubygems/index.txt"
+    <li><a href="../../_sources/ruby/rubygems/authlogic.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
