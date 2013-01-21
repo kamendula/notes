@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Devise Notes &mdash; 笔记</title>
+    <title>RMRE笔记 &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -26,8 +26,7 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../../index.html" />
     <link rel="up" title="RubyGems Notes" href="index.html" />
-    <link rel="next" title="CanCan Notes" href="cancan.html" />
-    <link rel="prev" title="RubyGems Notes" href="index.html" />
+    <link rel="prev" title="Authlogic Notes" href="authlogic.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -44,10 +43,7 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="cancan.html" title="CanCan Notes"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="RubyGems Notes"
+          <a href="authlogic.html" title="Authlogic Notes"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">笔记</a> &raquo;</li>
           <li><a href="../index.html" >Ruby Development Notes</a> &raquo;</li>
@@ -60,27 +56,13 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="devise-notes">
-<h1>Devise Notes<a class="headerlink" href="#devise-notes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2>配置<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="layout">
-<h3>自定义 layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
-<p>在 <cite>config/initializers/devise.rb</cite> 中加入</p>
-<div class="highlight-python"><pre>Devise::SessionsController.layout "bar"
-Devise::RegistrationsController.layout "foo"
-Devise::ConfirmationsController.layout false
-Devise::UnlocksController.layout "bar"
-Devise::PasswordsController.layout "foo"</pre>
+  <div class="section" id="rmre">
+<h1>RMRE笔记<a class="headerlink" href="#rmre" title="Permalink to this headline">¶</a></h1>
+<p>oracle</p>
+<div class="highlight-python"><pre>rmre -a oracle_enhanced -d dbname -u user -p pwd --port 1521 -s hostname -o app/models/</pre>
 </div>
-<p>参考：</p>
-<blockquote>
-<div><ul class="simple">
-<li><a class="reference external" href="http://stackoverflow.com/a/10972585/260793">Removing header rendering in specific rails .html.erb file</a></li>
-<li><a class="reference external" href="https://github.com/plataformatec/devise/wiki/How-To:-Create-custom-layouts">How To: Create custom layouts</a></li>
-</ul>
-</div></blockquote>
-</div>
+<p>mysql</p>
+<div class="highlight-python"><pre>rmre -a mysql -d dbname -u user -p pwd -o app/models</pre>
 </div>
 </div>
 
@@ -89,31 +71,19 @@ Devise::PasswordsController.layout "foo"</pre>
         </div>
       </div>
       <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Devise Notes</a><ul>
-<li><a class="reference internal" href="#id1">配置</a><ul>
-<li><a class="reference internal" href="#layout">自定义 layout</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3>Related Topics</h3>
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">Ruby Development Notes</a><ul>
   <li><a href="index.html">RubyGems Notes</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">RubyGems Notes</a></li>
-      <li>Next: <a href="cancan.html" title="next chapter">CanCan Notes</a></li>
+      <li>Previous: <a href="authlogic.html" title="previous chapter">Authlogic Notes</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/ruby/rubygems/devise.txt"
+    <li><a href="../../_sources/ruby/rubygems/rmre.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
