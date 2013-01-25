@@ -62,6 +62,17 @@
             
   <div class="section" id="cancan-notes">
 <h1>CanCan Notes<a class="headerlink" href="#cancan-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>忽略父控制器的验证<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>将 <tt class="docutils literal"><span class="pre">skip_load_and_authorize_resource</span></tt> 设置在 <tt class="docutils literal"><span class="pre">ApplicationController</span></tt> 中虽然方便，但是对于一些特殊的控制器，需要单独设置验证选项时，就需要忽略父控制器的验证了。</p>
+<p>CanCan 在验证时，需要加载一个 Model 用于检测权限，默认会检测控制器同名的 Model，如果控制器的 Model 不存在，可以通过如下方式指定</p>
+<div class="highlight-python"><pre>skip_load_and_authorize_resource # 忽略父控制器验证
+load_and_authorize_resource :class =&gt; Customer</pre>
+</div>
+</div>
+</div>
 <div class="section" id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -82,6 +93,10 @@
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">CanCan Notes</a><ul>
+<li><a class="reference internal" href="#tips">Tips</a><ul>
+<li><a class="reference internal" href="#id1">忽略父控制器的验证</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
 </ul>
 </li>
