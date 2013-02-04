@@ -25,6 +25,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../../index.html" />
+    <link rel="up" title="Python Packages" href="index.html" />
+    <link rel="next" title="CoffeeScript笔记" href="../../coffeescript/index.html" />
+    <link rel="prev" title="Python Packages" href="index.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -40,7 +43,15 @@
         <li class="right" style="margin-right: 10px">
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../../index.html">笔记</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../../coffeescript/index.html" title="CoffeeScript笔记"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python Packages"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">笔记</a> &raquo;</li>
+          <li><a href="../index.html" >Python开发笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Python Packages</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -56,9 +67,10 @@
 <div class="section" id="id2">
 <h3>控制语句不产生空行<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>通常，使用 {% ... %} 这样的控制语句会产生一些空行，虽然以于用户来说，这些空行对网页的功能并没有什么影响，但一些有洁癖的人来说，是不能容忍的。 Jiaja2 提供了忽略空行的方法</p>
-<div class="highlight-python"><pre>{% for i in some_array -%}
-    do something with "{{ i }}"
-{% end for -%}</pre>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">i</span> <span class="k">in</span> <span class="nv">some_array</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">    do something with &quot;</span><span class="cp">{{</span> <span class="nv">i</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="cp">{%</span> <span class="k">end</span> <span class="nv">for</span> -<span class="cp">%}</span><span class="x"></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -83,6 +95,12 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Python开发笔记</a><ul>
+  <li><a href="index.html">Python Packages</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Python Packages</a></li>
+      <li>Next: <a href="../../coffeescript/index.html" title="next chapter">CoffeeScript笔记</a></li>
+  </ul></li>
+  </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>

@@ -6,15 +6,12 @@
 笔记
 =======
 
-开发
------
+Contents:
 
 .. toctree::
    :maxdepth: 2
 
    ruby/index
-   python/index
-   coffeescript/index
 
 Indices and tables
 ==================
