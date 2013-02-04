@@ -1,0 +1,136 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rails技巧 &mdash; 笔记</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="笔记" href="../index.html" />
+    <link rel="up" title="Ruby开发笔记" href="index.html" />
+    <link rel="next" title="Rails Logging" href="logging.html" />
+    <link rel="prev" title="Ruby开发笔记" href="index.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="logging.html" title="Rails Logging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Ruby开发笔记"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Ruby开发笔记</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="rails">
+<h1>Rails技巧<a class="headerlink" href="#rails" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-new">
+<h2>create 和 new 创建对象的区别<a class="headerlink" href="#create-new" title="Permalink to this headline">¶</a></h2>
+<p>new 只负责创建对象，如果需要调用 save 方法才能持久化到数据库，而 create 直接完成了这两步</p>
+</div>
+<div class="section" id="redirect-flash">
+<h2>redirect 时传递 flash 信息<a class="headerlink" href="#redirect-flash" title="Permalink to this headline">¶</a></h2>
+<p>跳转时对于 success 类型的 flash 信息，不会传递，需要强制使用</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">edirect_to</span> <span class="n">user_path</span><span class="p">(</span><span class="vi">@user</span><span class="p">),</span> <span class="ss">:flash</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:success</span> <span class="o">=&gt;</span> <span class="s2">&quot;Message&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="layout">
+<h2>返回页面不继承layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
+<p>用户于 ajax 载入页面的场景，比如 <tt class="docutils literal"><span class="pre">jquery.load</span></tt></p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">format</span><span class="o">.</span><span class="n">html</span> <span class="p">{</span> <span class="n">render</span> <span class="s1">&#39;_form&#39;</span><span class="p">,</span> <span class="ss">:layout</span> <span class="o">=&gt;</span> <span class="kp">false</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Rails技巧</a><ul>
+<li><a class="reference internal" href="#create-new">create 和 new 创建对象的区别</a></li>
+<li><a class="reference internal" href="#redirect-flash">redirect 时传递 flash 信息</a></li>
+<li><a class="reference internal" href="#layout">返回页面不继承layout</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Ruby开发笔记</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Ruby开发笔记</a></li>
+      <li>Next: <a href="logging.html" title="next chapter">Rails Logging</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/rails/tips.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, greatghoul.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

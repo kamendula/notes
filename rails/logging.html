@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python开发笔记 &mdash; 笔记</title>
+    <title>Rails Logging &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -25,8 +25,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
-    <link rel="next" title="Python技巧" href="tips.html" />
-    <link rel="prev" title="RMRE笔记" href="../ruby/rubygems/rmre.html" />
+    <link rel="up" title="Ruby开发笔记" href="index.html" />
+    <link rel="next" title="RubyGems Notes" href="rubygems/index.html" />
+    <link rel="prev" title="Rails技巧" href="tips.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -43,12 +44,13 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="tips.html" title="Python技巧"
+          <a href="rubygems/index.html" title="RubyGems Notes"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../ruby/rubygems/rmre.html" title="RMRE笔记"
+          <a href="tips.html" title="Rails技巧"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">笔记</a> &raquo;</li> 
+        <li><a href="../index.html">笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Ruby开发笔记</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -57,19 +59,25 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="python">
-<h1>Python开发笔记<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tips.html">Python技巧</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tips.html#dict">dict转对象</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="packages/index.html">Python Packages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="packages/jinja2.html">Jinaja2 笔记</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="rails-logging">
+<h1>Rails Logging<a class="headerlink" href="#rails-logging" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="assets">
+<h2>禁用Assets日志<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h2>
+<p>使用 <a class="reference external" href="https://github.com/evrone/quiet_assets">https://github.com/evrone/quiet_assets</a></p>
+<p>或者创建 <cite>config/initializers/quiet_assets.rb</cite></p>
+<div class="highlight-python"><pre>Rails.application.assets.logger = Logger.new(RUBY_PLATFORM =~ /(win|w)32$/ ? "NUL" : "/dev/null")
+Rails::Rack::Logger.class_eval do
+  def call_with_quiet_assets(env)
+    previous_level = Rails.logger.level
+    Rails.logger.level = Logger::ERROR if env['PATH_INFO'].index("/assets/") == 0
+    call_without_quiet_assets(env).tap do
+      Rails.logger.level = previous_level
+    end
+  end
+  alias_method_chain :call, :quiet_assets
+end</pre>
+</div>
+<p>参考 <a class="reference external" href="http://stackoverflow.com/a/9179514/260793">http://stackoverflow.com/a/9179514/260793</a></p>
 </div>
 </div>
 
@@ -78,16 +86,26 @@
         </div>
       </div>
       <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Rails Logging</a><ul>
+<li><a class="reference internal" href="#assets">禁用Assets日志</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../ruby/rubygems/rmre.html" title="previous chapter">RMRE笔记</a></li>
-      <li>Next: <a href="tips.html" title="next chapter">Python技巧</a></li>
+  <li><a href="index.html">Ruby开发笔记</a><ul>
+      <li>Previous: <a href="tips.html" title="previous chapter">Rails技巧</a></li>
+      <li>Next: <a href="rubygems/index.html" title="next chapter">RubyGems Notes</a></li>
+  </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/python/index.txt"
+    <li><a href="../_sources/rails/logging.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
