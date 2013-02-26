@@ -25,9 +25,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
-    <link rel="up" title="Ruby开发笔记" href="index.html" />
+    <link rel="up" title="Rails开发笔记" href="index.html" />
     <link rel="next" title="Rails Logging" href="logging.html" />
-    <link rel="prev" title="Ruby开发笔记" href="index.html" />
+    <link rel="prev" title="Rails开发笔记" href="index.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -47,10 +47,10 @@
           <a href="logging.html" title="Rails Logging"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Ruby开发笔记"
+          <a href="index.html" title="Rails开发笔记"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">笔记</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Ruby开发笔记</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">Rails开发笔记</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -79,6 +79,24 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="collection-select-html-options">
+<h2>collection_select 设置 html_options<a class="headerlink" href="#collection-select-html-options" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">collection_select</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="no">UserTitle</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="p">{},</span> <span class="p">{</span><span class="ss">:class</span><span class="o">=&gt;</span><span class="s1">&#39;my-custom-class&#39;</span><span class="p">})</span>
+<span class="n">collection_select</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="no">UserTitle</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="p">{</span><span class="ss">:prompt</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">},</span> <span class="p">{</span><span class="ss">:class</span><span class="o">=&gt;</span><span class="s1">&#39;my-custom-class&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="action">
+<h2>Action 跳转回之前页面<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h2>
+<p>Rails 对于跳转回之前页面这样的操作做了非常方便的支持</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">toggle</span>
+  <span class="c1"># ...</span>
+  <span class="n">redirect_to</span> <span class="ss">:back</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>参考资料： <a class="reference external" href="http://stackoverflow.com/questions/1947578/how-do-i-set-the-html-options-for-collection-select-in-rails">http://stackoverflow.com/questions/1947578/how-do-i-set-the-html-options-for-collection-select-in-rails</a></p>
+</div>
 </div>
 
 
@@ -93,14 +111,16 @@
 <li><a class="reference internal" href="#create-new">create 和 new 创建对象的区别</a></li>
 <li><a class="reference internal" href="#redirect-flash">redirect 时传递 flash 信息</a></li>
 <li><a class="reference internal" href="#layout">返回页面不继承layout</a></li>
+<li><a class="reference internal" href="#collection-select-html-options">collection_select 设置 html_options</a></li>
+<li><a class="reference internal" href="#action">Action 跳转回之前页面</a></li>
 </ul>
 </li>
 </ul>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Ruby开发笔记</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Ruby开发笔记</a></li>
+  <li><a href="index.html">Rails开发笔记</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Rails开发笔记</a></li>
       <li>Next: <a href="logging.html" title="next chapter">Rails Logging</a></li>
   </ul></li>
   </ul></li>

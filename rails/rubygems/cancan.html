@@ -50,7 +50,7 @@
           <a href="devise.html" title="Devise Notes"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">笔记</a> &raquo;</li>
-          <li><a href="../index.html" >Ruby开发笔记</a> &raquo;</li>
+          <li><a href="../index.html" >Rails开发笔记</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">RubyGems Notes</a> &raquo;</li> 
       </ul>
     </div>  
@@ -70,6 +70,26 @@
 <p>CanCan 在验证时，需要加载一个 Model 用于检测权限，默认会检测控制器同名的 Model，如果控制器的 Model 不存在，可以通过如下方式指定</p>
 <div class="highlight-python"><pre>skip_load_and_authorize_resource # 忽略父控制器验证
 load_and_authorize_resource :class =&gt; Customer</pre>
+</div>
+</div>
+<div class="section" id="action">
+<h3>Action组合别名处理<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
+<p>一般对于成组出现的权限，没有必要为每一个 action 都定一个 permission，
+可以在 <tt class="docutils literal"><span class="pre">app/models/ability.rb</span></tt> 中这样做</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Ability</span>
+  <span class="kp">include</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">Ability</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">alias_action</span> <span class="ss">:check</span><span class="p">,</span> <span class="ss">:approve</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:approve</span>
+    <span class="c1"># ..</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>然后在使用时可以直接</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">can</span> <span class="ss">:merge</span><span class="p">,</span> <span class="no">Customer</span>
+<span class="n">can?</span> <span class="ss">:merge</span><span class="p">,</span> <span class="no">Customer</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -95,6 +115,7 @@ load_and_authorize_resource :class =&gt; Customer</pre>
 <li><a class="reference internal" href="#">CanCan Notes</a><ul>
 <li><a class="reference internal" href="#tips">Tips</a><ul>
 <li><a class="reference internal" href="#id1">忽略父控制器的验证</a></li>
+<li><a class="reference internal" href="#action">Action组合别名处理</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#resources">Resources</a></li>
@@ -104,7 +125,7 @@ load_and_authorize_resource :class =&gt; Customer</pre>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-  <li><a href="../index.html">Ruby开发笔记</a><ul>
+  <li><a href="../index.html">Rails开发笔记</a><ul>
   <li><a href="index.html">RubyGems Notes</a><ul>
       <li>Previous: <a href="devise.html" title="previous chapter">Devise Notes</a></li>
       <li>Next: <a href="authlogic.html" title="next chapter">Authlogic Notes</a></li>

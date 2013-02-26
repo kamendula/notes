@@ -25,6 +25,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
+    <link rel="next" title="GIT笔记" href="../git.html" />
     <link rel="prev" title="Jinaja2 笔记" href="../python/packages/jinja2.html" />
    
   
@@ -41,6 +42,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../git.html" title="GIT笔记"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../python/packages/jinja2.html" title="Jinaja2 笔记"
              accesskey="P">previous</a> |</li>
@@ -59,21 +63,21 @@
 <h2>语法技巧<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
 <h3>遍历列表并生成新列表<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-coffeescript"><div class="highlight"><pre><span class="nv">formValues = </span><span class="p">(</span><span class="nx">elem</span><span class="p">.</span><span class="nx">value</span> <span class="k">for</span> <span class="nx">elem</span> <span class="k">in</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;.input&#39;</span><span class="p">))</span>
+<div class="highlight-coffeescript"><div class="highlight"><pre><span class="nv">formValues = </span><span class="p">(</span><span class="nx">elem</span><span class="p">.</span><span class="nx">value</span> <span class="k">for</span> <span class="nx">elem</span> <span class="k">in</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.input&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
 <h3>回调方法绑定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span class="nv">object =</span>
-  <span class="nv">func: </span><span class="o">-&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;#div&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">=&gt;</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nv">color: </span><span class="s">&#39;red&#39;</span>
+  <span class="nv">func: </span><span class="o">-&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#div&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">=&gt;</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nv">color: </span><span class="s1">&#39;red&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
 <h3>遍历字典<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="k">of</span> <span class="nx">myObject</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">key</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">value</span><span class="si">}</span><span class="s">&quot;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">&quot;#{key}: #{value}&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -102,6 +106,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../python/packages/jinja2.html" title="previous chapter">Jinaja2 笔记</a></li>
+      <li>Next: <a href="../git.html" title="next chapter">GIT笔记</a></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>

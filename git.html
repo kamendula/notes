@@ -81,6 +81,15 @@ sudo make install</pre>
 </div>
 </div>
 </div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="remote">
+<h3>在本地删除已经不存在的remote分支<a class="headerlink" href="#remote" title="Permalink to this headline">¶</a></h3>
+<p>在 github pull request 合并后，可以直接删除被合并的 remote 分支，而此时本地仓库中的 remote 分支的引用并没有删除，要与服务器上保持同步，则需要:</p>
+<div class="highlight-python"><pre>git fetch -p</pre>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -94,6 +103,10 @@ sudo make install</pre>
 <li><a class="reference internal" href="#">GIT笔记</a><ul>
 <li><a class="reference internal" href="#id1">安装GIT</a><ul>
 <li><a class="reference internal" href="#centosgit">在CentOS中安装GIT</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tips">Tips</a><ul>
+<li><a class="reference internal" href="#remote">在本地删除已经不存在的remote分支</a></li>
 </ul>
 </li>
 </ul>
