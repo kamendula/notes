@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Rails技巧 &mdash; 笔记</title>
+    <title>Tips &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -59,8 +59,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="rails">
-<h1>Rails技巧<a class="headerlink" href="#rails" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tips">
+<h1>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="create-new">
 <h2>create 和 new 创建对象的区别<a class="headerlink" href="#create-new" title="Permalink to this headline">¶</a></h2>
 <p>new 只负责创建对象，如果需要调用 save 方法才能持久化到数据库，而 create 直接完成了这两步</p>
@@ -85,6 +85,7 @@
 <span class="n">collection_select</span><span class="p">(</span><span class="ss">:user</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="no">UserTitle</span><span class="o">.</span><span class="n">all</span><span class="p">,</span> <span class="ss">:id</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="p">{</span><span class="ss">:prompt</span><span class="o">=&gt;</span><span class="kp">true</span><span class="p">},</span> <span class="p">{</span><span class="ss">:class</span><span class="o">=&gt;</span><span class="s1">&#39;my-custom-class&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
+<p>参考资料： <a class="reference external" href="http://stackoverflow.com/questions/1947578/how-do-i-set-the-html-options-for-collection-select-in-rails">http://stackoverflow.com/questions/1947578/how-do-i-set-the-html-options-for-collection-select-in-rails</a></p>
 </div>
 <div class="section" id="action">
 <h2>Action 跳转回之前页面<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h2>
@@ -95,7 +96,18 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>参考资料： <a class="reference external" href="http://stackoverflow.com/questions/1947578/how-do-i-set-the-html-options-for-collection-select-in-rails">http://stackoverflow.com/questions/1947578/how-do-i-set-the-html-options-for-collection-select-in-rails</a></p>
+</div>
+<div class="section" id="id1">
+<h2>在可能为空的对象上安全的调用方法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>我们可能需要在一个对象上调用方法，但不能提前预知该对象是否是 <cite>nil</cite> ，ruby 为我们提供了非常安全的调用方法。</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">try</span><span class="p">(</span><span class="ss">:method_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如何，只会在 <cite>obj</cite> 不是 <cite>nil</cite> 的情况下去调用 <cite>method_name</cite> 方法，它等价于</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">nil?</span> <span class="p">?</span> <span class="kp">nil</span> <span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">method_name</span>
+</pre></div>
+</div>
+<p>参考资料： <a class="reference external" href="http://stackoverflow.com/a/9595649/260793">http://stackoverflow.com/a/9595649/260793</a></p>
 </div>
 </div>
 
@@ -107,12 +119,13 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Rails技巧</a><ul>
+<li><a class="reference internal" href="#">Tips</a><ul>
 <li><a class="reference internal" href="#create-new">create 和 new 创建对象的区别</a></li>
 <li><a class="reference internal" href="#redirect-flash">redirect 时传递 flash 信息</a></li>
 <li><a class="reference internal" href="#layout">返回页面不继承layout</a></li>
 <li><a class="reference internal" href="#collection-select-html-options">collection_select 设置 html_options</a></li>
 <li><a class="reference internal" href="#action">Action 跳转回之前页面</a></li>
+<li><a class="reference internal" href="#id1">在可能为空的对象上安全的调用方法</a></li>
 </ul>
 </li>
 </ul>
