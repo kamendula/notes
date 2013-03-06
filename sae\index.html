@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Rails Logging &mdash; 笔记</title>
+    <title>SAE Python 笔记 &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -25,9 +25,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
-    <link rel="up" title="Rails开发笔记" href="index.html" />
-    <link rel="next" title="RubyGems Notes" href="rubygems/index.html" />
-    <link rel="prev" title="Rails技巧" href="tips.html" />
+    <link rel="next" title="Tips" href="tips.html" />
+    <link rel="prev" title="TideSDK Notes" href="../tidesdk.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -44,13 +43,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="rubygems/index.html" title="RubyGems Notes"
+          <a href="tips.html" title="Tips"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tips.html" title="Rails技巧"
+          <a href="../tidesdk.html" title="TideSDK Notes"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">笔记</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Rails开发笔记</a> &raquo;</li> 
+        <li><a href="../index.html">笔记</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,26 +57,33 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="rails-logging">
-<h1>Rails Logging<a class="headerlink" href="#rails-logging" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="assets">
-<h2>禁用Assets日志<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h2>
-<p>使用 <a class="reference external" href="https://github.com/evrone/quiet_assets">https://github.com/evrone/quiet_assets</a></p>
-<p>或者创建 <cite>config/initializers/quiet_assets.rb</cite></p>
-<div class="highlight-python"><pre>Rails.application.assets.logger = Logger.new(RUBY_PLATFORM =~ /(win|w)32$/ ? "NUL" : "/dev/null")
-Rails::Rack::Logger.class_eval do
-  def call_with_quiet_assets(env)
-    previous_level = Rails.logger.level
-    Rails.logger.level = Logger::ERROR if env['PATH_INFO'].index("/assets/") == 0
-    call_without_quiet_assets(env).tap do
-      Rails.logger.level = previous_level
-    end
-  end
-  alias_method_chain :call, :quiet_assets
-end</pre>
+  <div class="section" id="sae-python">
+<h1>SAE Python 笔记<a class="headerlink" href="#sae-python" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/SAEPython/saepythondevguide">https://github.com/SAEPython/saepythondevguide</a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tips.html">Tips</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tips.html#sae">本地和SAE环境使用不同的数据库配置</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<p>参考 <a class="reference external" href="http://stackoverflow.com/a/9179514/260793">http://stackoverflow.com/a/9179514/260793</a></p>
-</div>
+<p><strong>参考资料</strong></p>
+<p>博文:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://saepy.sinaapp.com/topic/21/%E8%BD%BB%E6%9D%BE%E6%90%AD%E5%BB%BAsae-python-%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83">轻松搭建SAE Python 本地运行环境</a> - ego008</li>
+<li><a class="reference external" href="http://saepy.sinaapp.com/topic/82/sae%E5%9C%A8kvdb%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E7%9A%84%E6%A0%BC%E5%BC%8F%E6%AF%94%E8%BE%83-json-pickle-string">SAE在kvdb保存数据的格式比较：json、pickle、string</a> - ego008</li>
+<li><a class="reference external" href="http://saepy.sinaapp.com/topic/29/sae-python-storage-%E4%BD%BF%E7%94%A8%E5%88%9D%E4%BD%93%E9%AA%8C">SAE/python Storage 使用初体验</a> - ego008</li>
+</ul>
+</div></blockquote>
+<p>教程:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://python.sinaapp.com/doc/index.html">SAE Python 开发者手册</a> - SAEPython</li>
+<li><a class="reference external" href="http://chaos2sae.readthedocs.org/en/latest/">42分钟乱入 SAE 手册</a> - Zoom.Quiet</li>
+</ul>
+</div></blockquote>
 </div>
 
 
@@ -86,26 +91,16 @@ end</pre>
         </div>
       </div>
       <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Rails Logging</a><ul>
-<li><a class="reference internal" href="#assets">禁用Assets日志</a></li>
-</ul>
-</li>
-</ul>
-<h3>Related Topics</h3>
+        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Rails开发笔记</a><ul>
-      <li>Previous: <a href="tips.html" title="previous chapter">Rails技巧</a></li>
-      <li>Next: <a href="rubygems/index.html" title="next chapter">RubyGems Notes</a></li>
-  </ul></li>
+      <li>Previous: <a href="../tidesdk.html" title="previous chapter">TideSDK Notes</a></li>
+      <li>Next: <a href="tips.html" title="next chapter">Tips</a></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/rails/logging.txt"
+    <li><a href="../_sources/sae/index.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
