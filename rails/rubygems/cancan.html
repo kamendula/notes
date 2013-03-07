@@ -77,7 +77,7 @@ load_and_authorize_resource :class =&gt; Customer</pre>
 <p>一般对于成组出现的权限，没有必要为每一个 action 都定一个 permission，
 可以在 <tt class="docutils literal"><span class="pre">app/models/ability.rb</span></tt> 中这样做</p>
 <div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Ability</span>
-  <span class="kp">include</span> <span class="ss">CanCan</span><span class="p">:</span><span class="ss">:Ability</span>
+  <span class="kp">include</span> <span class="no">CanCan</span><span class="o">::</span><span class="no">Ability</span>
 
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
     <span class="n">alias_action</span> <span class="ss">:check</span><span class="p">,</span> <span class="ss">:approve</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:approve</span>

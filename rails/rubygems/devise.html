@@ -67,11 +67,11 @@
 <div class="section" id="layout">
 <h3>自定义 layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h3>
 <p>在 <cite>config/initializers/devise.rb</cite> 中加入</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span class="ss">Devise</span><span class="p">:</span><span class="ss">:SessionsController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;bar&quot;</span>
-<span class="ss">Devise</span><span class="p">:</span><span class="ss">:RegistrationsController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;foo&quot;</span>
-<span class="ss">Devise</span><span class="p">:</span><span class="ss">:ConfirmationsController</span><span class="o">.</span><span class="n">layout</span> <span class="kp">false</span>
-<span class="ss">Devise</span><span class="p">:</span><span class="ss">:UnlocksController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;bar&quot;</span>
-<span class="ss">Devise</span><span class="p">:</span><span class="ss">:PasswordsController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;foo&quot;</span>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Devise</span><span class="o">::</span><span class="no">SessionsController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;bar&quot;</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">RegistrationsController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;foo&quot;</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">ConfirmationsController</span><span class="o">.</span><span class="n">layout</span> <span class="kp">false</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">UnlocksController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;bar&quot;</span>
+<span class="no">Devise</span><span class="o">::</span><span class="no">PasswordsController</span><span class="o">.</span><span class="n">layout</span> <span class="s2">&quot;foo&quot;</span>
 </pre></div>
 </div>
 <p>参考：</p>
