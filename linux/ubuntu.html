@@ -71,6 +71,17 @@
 </div>
 <p>系统重启后就正常了，参考资料 <a class="reference external" href="http://laslow.net/2012/05/06/gnome-keyring-issues-in-ubuntu-12-04/">^1</a></p>
 </div>
+<div class="section" id="usb">
+<h3>制作USB启动盘<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
+<p>比如 USB 的设置位置为 <cite>/dev/sdb</cite></p>
+<div class="highlight-shell"><pre>sudo dd if=/path/to/your/iso of=/dev/sdb</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">这里有个小技巧，先不要插入U盘， 输入 <cite>sudo dd if=/path/to/your/iso of=/dev/sd</cite> 后按 <cite>Tab</cite> 补全，会列出匹配的设备列表，此时插入U盘，再次按 <cite>Tab</cite> 补全，新出来的那个设备就是你的 U 盘了。</p>
+</div>
+<p>参考资料： <a class="reference external" href="http://askubuntu.com/questions/59551/how-to-burn-iso-to-usb-device">http://askubuntu.com/questions/59551/how-to-burn-iso-to-usb-device</a></p>
+</div>
 </div>
 </div>
 
@@ -85,6 +96,7 @@
 <li><a class="reference internal" href="#">Ubuntu笔记</a><ul>
 <li><a class="reference internal" href="#id1">疑难杂症</a><ul>
 <li><a class="reference internal" href="#xubuntuwarning-gnome-keyring">XUBUNTU下出现WARNING: gnome-keyring的问题</a></li>
+<li><a class="reference internal" href="#usb">制作USB启动盘</a></li>
 </ul>
 </li>
 </ul>
