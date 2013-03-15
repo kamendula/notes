@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
-    <link rel="next" title="GIT笔记" href="../git.html" />
+    <link rel="next" title="TideSDK Notes" href="../tidesdk.html" />
     <link rel="prev" title="Jinaja2 笔记" href="../python/packages/jinja2.html" />
    
   
@@ -43,7 +43,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../git.html" title="GIT笔记"
+          <a href="../tidesdk.html" title="TideSDK Notes"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="../python/packages/jinja2.html" title="Jinaja2 笔记"
@@ -70,7 +70,7 @@
 <div class="section" id="id3">
 <h3>回调方法绑定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-coffeescript"><div class="highlight"><pre><span class="nv">object =</span>
-  <span class="nv">func: </span><span class="o">-&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;#div&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">=&gt;</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nv">color: </span><span class="s">&#39;red&#39;</span>
+  <span class="nv">func: </span><span class="nf">-&gt;</span> <span class="nx">$</span><span class="p">(</span><span class="s">&#39;#div&#39;</span><span class="p">).</span><span class="nx">click</span> <span class="o">=&gt;</span> <span class="nx">@element</span><span class="p">.</span><span class="nx">css</span> <span class="nv">color: </span><span class="s">&#39;red&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -80,6 +80,10 @@
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s">&quot;</span><span class="si">#{</span><span class="nx">key</span><span class="si">}</span><span class="s">: </span><span class="si">#{</span><span class="nx">value</span><span class="si">}</span><span class="s">&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id5">
+<h3>回调中 -&gt; 和 =&gt; 的区别<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>使用 <cite>-&gt;</cite> 和 <cite>=&gt;</cite> 回调，其 <cite>&#64;</cite> 的引用是不同的， <cite>-&gt;</cite> 时， <cite>&#64;</cite> 指带调用者，而 <cite>=&gt;</cite> 时指代的是 <cite>document</cite></p>
 </div>
 </div>
 </div>
@@ -97,6 +101,7 @@
 <li><a class="reference internal" href="#id2">遍历列表并生成新列表</a></li>
 <li><a class="reference internal" href="#id3">回调方法绑定</a></li>
 <li><a class="reference internal" href="#id4">遍历字典</a></li>
+<li><a class="reference internal" href="#id5">回调中 -&gt; 和 =&gt; 的区别</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +111,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../python/packages/jinja2.html" title="previous chapter">Jinaja2 笔记</a></li>
-      <li>Next: <a href="../git.html" title="next chapter">GIT笔记</a></li>
+      <li>Next: <a href="../tidesdk.html" title="next chapter">TideSDK Notes</a></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
