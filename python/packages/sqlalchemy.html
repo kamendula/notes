@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python Packages &mdash; 笔记</title>
+    <title>SqlAlchemy 笔记 &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -25,9 +25,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../../index.html" />
-    <link rel="up" title="Python开发笔记" href="../index.html" />
-    <link rel="next" title="Flask 笔记" href="flask.html" />
-    <link rel="prev" title="Python技巧" href="../tips.html" />
+    <link rel="up" title="Python Packages" href="index.html" />
+    <link rel="next" title="CoffeeScript笔记" href="../../coffeescript/index.html" />
+    <link rel="prev" title="Jinaja2 笔记" href="jinja2.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -44,13 +44,14 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="flask.html" title="Flask 笔记"
+          <a href="../../coffeescript/index.html" title="CoffeeScript笔记"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../tips.html" title="Python技巧"
+          <a href="jinja2.html" title="Jinaja2 笔记"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">笔记</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Python开发笔记</a> &raquo;</li> 
+          <li><a href="../index.html" >Python开发笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Python Packages</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,23 +60,21 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="python-packages">
-<h1>Python Packages<a class="headerlink" href="#python-packages" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="flask.html">Flask 笔记</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="flask.html#tips-tricks">Tips &amp; Tricks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="jinja2.html">Jinaja2 笔记</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="jinja2.html#id1">基本语法</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="sqlalchemy.html">SqlAlchemy 笔记</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sqlalchemy.html#tips">Tips</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="sqlalchemy">
+<h1>SqlAlchemy 笔记<a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="windows-mysql-connector-pyhton-mysql-python">
+<h3>Windows 使用 mysql-connector-pyhton 替代 mysql_python<a class="headerlink" href="#windows-mysql-connector-pyhton-mysql-python" title="Permalink to this headline">¶</a></h3>
+<p>mysql_python 在 windows 下极品的难装，于是比较好的方案就是，使用 mysql-connector-python 替代。</p>
+<p>mysql-connector-python 为 mysql 官方出品，应该也比较可靠吧。</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install mysql-connector-python
+</pre></div>
+</div>
+<p>在 sqlalchemy 中使用 mysql-connector-python 连接，只需要将连接的 url 改为如下形式即可</p>
+<div class="highlight-python"><pre>mysql+mysqlconnector://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;[:&lt;port&gt;]/&lt;dbname&gt;</pre>
+</div>
+</div>
 </div>
 </div>
 
@@ -84,18 +83,31 @@
         </div>
       </div>
       <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper"><h3>Related Topics</h3>
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SqlAlchemy 笔记</a><ul>
+<li><a class="reference internal" href="#tips">Tips</a><ul>
+<li><a class="reference internal" href="#windows-mysql-connector-pyhton-mysql-python">Windows 使用 mysql-connector-pyhton 替代 mysql_python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">Python开发笔记</a><ul>
-      <li>Previous: <a href="../tips.html" title="previous chapter">Python技巧</a></li>
-      <li>Next: <a href="flask.html" title="next chapter">Flask 笔记</a></li>
+  <li><a href="index.html">Python Packages</a><ul>
+      <li>Previous: <a href="jinja2.html" title="previous chapter">Jinaja2 笔记</a></li>
+      <li>Next: <a href="../../coffeescript/index.html" title="next chapter">CoffeeScript笔记</a></li>
+  </ul></li>
   </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/python/packages/index.txt"
+    <li><a href="../../_sources/python/packages/sqlalchemy.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
