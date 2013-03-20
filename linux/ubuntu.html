@@ -74,7 +74,8 @@
 <div class="section" id="usb">
 <h3>制作USB启动盘<a class="headerlink" href="#usb" title="Permalink to this headline">¶</a></h3>
 <p>比如 USB 的设置位置为 <cite>/dev/sdb</cite></p>
-<div class="highlight-shell"><pre>sudo dd if=/path/to/your/iso of=/dev/sdb</pre>
+<div class="highlight-bash"><div class="highlight"><pre>sudo dd <span class="k">if</span><span class="o">=</span>/path/to/your/iso <span class="nv">of</span><span class="o">=</span>/dev/sdb
+</pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -84,10 +85,29 @@
 </div>
 <div class="section" id="rpm-deb">
 <h3>rpm 包转 deb 包<a class="headerlink" href="#rpm-deb" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-shell"><pre>sudo apt-get install alien
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install alien
 sudo alien xxx.rpm
-sudo dpkg -i xxx.deb</pre>
+sudo dpkg -i xxx.deb
+</pre></div>
 </div>
+</div>
+<div class="section" id="unity-gnome-shell">
+<h3>卸载 Unity 安装 Gnome Shell<a class="headerlink" href="#unity-gnome-shell" title="Permalink to this headline">¶</a></h3>
+<p>安装 Gnome Shell，安装时 Display Manager 选择 <strong>lightdm</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install gnome-shell
+sudo apt-get install gnome-themes*
+sudo  /usr/lib/lightdm/lightdm-set-defaults  -s  gnome-shell
+</pre></div>
+</div>
+<p>安装完成后重新启动，登陆界面选择会话时选择 <strong>Gnome</strong></p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get -y --auto-remove purge unity
+sudo apt-get -y --auto-remove purge unity-common
+sudo apt-get -y --auto-remove purge unity-lens*
+sudo apt-get -y --auto-remove purge unity-services
+sudo apt-get -y --auto-remove purge unity-asset-pool
+</pre></div>
+</div>
+<p>参考： <a class="reference external" href="http://garfield550.diandian.com/linux/00128">http://garfield550.diandian.com/linux/00128</a></p>
 </div>
 </div>
 </div>
@@ -105,6 +125,7 @@ sudo dpkg -i xxx.deb</pre>
 <li><a class="reference internal" href="#xubuntuwarning-gnome-keyring">XUBUNTU下出现WARNING: gnome-keyring的问题</a></li>
 <li><a class="reference internal" href="#usb">制作USB启动盘</a></li>
 <li><a class="reference internal" href="#rpm-deb">rpm 包转 deb 包</a></li>
+<li><a class="reference internal" href="#unity-gnome-shell">卸载 Unity 安装 Gnome Shell</a></li>
 </ul>
 </li>
 </ul>
