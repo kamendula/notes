@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
     <link rel="up" title="Rails开发笔记" href="index.html" />
-    <link rel="next" title="Rails Logging" href="logging.html" />
+    <link rel="next" title="Views &amp; Forms Notes" href="views.html" />
     <link rel="prev" title="Rails开发笔记" href="index.html" />
    
   
@@ -44,7 +44,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="logging.html" title="Rails Logging"
+          <a href="views.html" title="Views &amp; Forms Notes"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Rails开发笔记"
@@ -109,6 +109,17 @@
 </div>
 <p>参考资料： <a class="reference external" href="http://stackoverflow.com/a/9595649/260793">http://stackoverflow.com/a/9595649/260793</a></p>
 </div>
+<div class="section" id="rails">
+<h2>设置 rails 日志格式<a class="headerlink" href="#rails" title="Permalink to this headline">¶</a></h2>
+<p><cite>configenviroment.rb</cite></p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Logger</span>
+  <span class="k">def</span> <span class="nf">format_message</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">progname</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">time</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="ss">:db</span><span class="p">)</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">level</span><span class="si">}</span><span class="s2"> -- </span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -126,6 +137,7 @@
 <li><a class="reference internal" href="#collection-select-html-options">collection_select 设置 html_options</a></li>
 <li><a class="reference internal" href="#action">Action 跳转回之前页面</a></li>
 <li><a class="reference internal" href="#id1">在可能为空的对象上安全的调用方法</a></li>
+<li><a class="reference internal" href="#rails">设置 rails 日志格式</a></li>
 </ul>
 </li>
 </ul>
@@ -134,7 +146,7 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">Rails开发笔记</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Rails开发笔记</a></li>
-      <li>Next: <a href="logging.html" title="next chapter">Rails Logging</a></li>
+      <li>Next: <a href="views.html" title="next chapter">Views &amp; Forms Notes</a></li>
   </ul></li>
   </ul></li>
 </ul>
