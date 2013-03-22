@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
     <link rel="next" title="TideSDK Notes" href="../tidesdk.html" />
-    <link rel="prev" title="Jinaja2 笔记" href="../python/packages/jinja2.html" />
+    <link rel="prev" title="SqlAlchemy 笔记" href="../python/packages/sqlalchemy.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -46,7 +46,7 @@
           <a href="../tidesdk.html" title="TideSDK Notes"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../python/packages/jinja2.html" title="Jinaja2 笔记"
+          <a href="../python/packages/sqlalchemy.html" title="SqlAlchemy 笔记"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">笔记</a> &raquo;</li> 
       </ul>
@@ -85,6 +85,26 @@
 <h3>回调中 -&gt; 和 =&gt; 的区别<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>使用 <cite>-&gt;</cite> 和 <cite>=&gt;</cite> 回调，其 <cite>&#64;</cite> 的引用是不同的， <cite>-&gt;</cite> 时， <cite>&#64;</cite> 指带调用者，而 <cite>=&gt;</cite> 时指代的是 <cite>document</cite></p>
 </div>
+<div class="section" id="id6">
+<h3>显示返回对象类型<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-coffeeScript"><pre>myFunc = -&gt;
+  return {
+    id   : 3
+    name : 'myname'
+  }
+
+myFunc = -&gt;
+  return {} =
+    id   : 3
+    name : 'myname'
+
+myFunc = -&gt;
+  # return
+  id   : 3
+  name : 'myname'</pre>
+</div>
+<p>参考 <a class="reference external" href="http://stackoverflow.com/a/4908015/260793">http://stackoverflow.com/a/4908015/260793</a></p>
+</div>
 </div>
 </div>
 
@@ -102,6 +122,7 @@
 <li><a class="reference internal" href="#id3">回调方法绑定</a></li>
 <li><a class="reference internal" href="#id4">遍历字典</a></li>
 <li><a class="reference internal" href="#id5">回调中 -&gt; 和 =&gt; 的区别</a></li>
+<li><a class="reference internal" href="#id6">显示返回对象类型</a></li>
 </ul>
 </li>
 </ul>
@@ -110,7 +131,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../python/packages/jinja2.html" title="previous chapter">Jinaja2 笔记</a></li>
+      <li>Previous: <a href="../python/packages/sqlalchemy.html" title="previous chapter">SqlAlchemy 笔记</a></li>
       <li>Next: <a href="../tidesdk.html" title="next chapter">TideSDK Notes</a></li>
   </ul></li>
 </ul>
