@@ -120,6 +120,22 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="id2">
+<h2>使用rails缓存<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>development默认禁用缓存，修改 <tt class="docutils literal"><span class="pre">config/enviroments/development.rb</span></tt> 启用</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">action_controller</span><span class="o">.</span><span class="n">perform_caching</span> <span class="o">=</span> <span class="kp">true</span>
+</pre></div>
+</div>
+<p>3种基本操作</p>
+<blockquote>
+<div><ul class="simple">
+<li>读 <tt class="docutils literal"><span class="pre">Rails.cache.write</span> <span class="pre">'foo',</span> <span class="pre">'bar'</span></tt></li>
+<li>写 <tt class="docutils literal"><span class="pre">Rails.cache.read</span> <span class="pre">'foo'</span></tt></li>
+<li>不存在则写，存在则读 <tt class="docutils literal"><span class="pre">Rails.cache.fetch</span> <span class="pre">'a_big_data'</span> <span class="pre">do</span> <span class="pre">{</span> <span class="pre">(1..1000000).inject(:+)</span> <span class="pre">}</span></tt></li>
+</ul>
+</div></blockquote>
+<p>缓存默认是以文件形式保存，文件位置 <tt class="docutils literal"><span class="pre">./tmp/cache</span></tt></p>
+</div>
 </div>
 
 
@@ -138,6 +154,7 @@
 <li><a class="reference internal" href="#action">Action 跳转回之前页面</a></li>
 <li><a class="reference internal" href="#id1">在可能为空的对象上安全的调用方法</a></li>
 <li><a class="reference internal" href="#rails">设置 rails 日志格式</a></li>
+<li><a class="reference internal" href="#id2">使用rails缓存</a></li>
 </ul>
 </li>
 </ul>
