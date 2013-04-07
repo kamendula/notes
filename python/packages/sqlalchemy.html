@@ -62,8 +62,8 @@
             
   <div class="section" id="sqlalchemy">
 <h1>SqlAlchemy 笔记<a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="tips">
-<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tips-tricks">
+<h2>Tips &amp; Tricks<a class="headerlink" href="#tips-tricks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="windows-mysql-connector-pyhton-mysql-python">
 <h3>Windows 使用 mysql-connector-pyhton 替代 mysql_python<a class="headerlink" href="#windows-mysql-connector-pyhton-mysql-python" title="Permalink to this headline">¶</a></h3>
 <p>mysql_python 在 windows 下极品的难装，于是比较好的方案就是，使用 mysql-connector-python 替代。</p>
@@ -74,6 +74,43 @@
 <p>在 sqlalchemy 中使用 mysql-connector-python 连接，只需要将连接的 url 改为如下形式即可</p>
 <div class="highlight-python"><pre>mysql+mysqlconnector://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;[:&lt;port&gt;]/&lt;dbname&gt;</pre>
 </div>
+</div>
+<div class="section" id="markdown2-markdown">
+<h3>使用 markdown2 转换 markdown 后存入数据库异常<a class="headerlink" href="#markdown2-markdown" title="Permalink to this headline">¶</a></h3>
+<p>在 sqlalchemy 中，如果某个字符串型的字段的值是通过 <tt class="docutils literal"><span class="pre">markdown2.markdown(content)</span></tt> 转换而来，则在存入数据库时会发生异常。</p>
+<p>错误信息为</p>
+<div class="highlight-python"><pre>sqlalchemy.exc.ProgrammingError
+ProgrammingError: (ProgrammingError) Failed processing pyformat-parameters; 'MySQLConverter' object has no attribute '_unicodewithattrs_to_mysql'</pre>
+</div>
+<p>这是因为 <tt class="docutils literal"><span class="pre">markdown2.markdown()</span></tt> 返回的对象为衍生的 <tt class="docutils literal"><span class="pre">unicode</span></tt> 对象 <tt class="docutils literal"><span class="pre">UnicodeWithAttrs</span></tt> ，为 <tt class="docutils literal"><span class="pre">unicode</span></tt> 的子类
+它包含一些 markdown 特有的属性，比如 <tt class="docutils literal"><span class="pre">toc</span></tt> , 这样的对象虽然仍是 <tt class="docutils literal"><span class="pre">unicode</span></tt>, 但是不能被 sqlalchemy 直接使用。</p>
+<p>所有必须进行一转换将其显式的转换成 <tt class="docutils literal"><span class="pre">unicode</span></tt> , 例如：</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">article</span><span class="o">.</span><span class="n">content_html</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">markdown</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>参考： <a class="reference external" href="https://github.com/trentm/python-markdown2/blob/master/lib/markdown2.py">https://github.com/trentm/python-markdown2/blob/master/lib/markdown2.py</a></p>
+</div>
+<div class="section" id="model">
+<h3>监听 Model 字段变化<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
+<p>SqlAlchemy 为提供了一系列的 Event 接口来侦听数据及模型的各种动作，比如监听字段内容的变化</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># import ...</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">event</span>
+
+<span class="k">def</span> <span class="nf">article_content_changed</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">old_content</span><span class="p">,</span> <span class="n">initiator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; 如果文章的正文变更，重新通过markdown转换html &quot;&quot;&quot;</span>
+
+    <span class="n">article</span><span class="o">.</span><span class="n">content_html</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">markdown</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+
+<span class="n">event</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">Article</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s">&#39;set&#39;</span><span class="p">,</span> <span class="n">article_content_changed</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样在用户更新 <tt class="docutils literal"><span class="pre">Article</span></tt> 模型的 <tt class="docutils literal"><span class="pre">content</span></tt> 字段时，就会自动调用绑定的 <tt class="docutils literal"><span class="pre">article_content_changed</span></tt> 方法。</p>
+<p><strong>参考资料</strong></p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_8/orm/events.html#attribute-events">http://docs.sqlalchemy.org/en/rel_0_8/orm/events.html#attribute-events</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/a/8911260/260793">http://stackoverflow.com/a/8911260/260793</a></li>
+<li><a class="reference external" href="http://www.sqlalchemy.org/trac/wiki/UsageRecipes/NamingConventions">http://www.sqlalchemy.org/trac/wiki/UsageRecipes/NamingConventions</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -87,8 +124,10 @@
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">SqlAlchemy 笔记</a><ul>
-<li><a class="reference internal" href="#tips">Tips</a><ul>
+<li><a class="reference internal" href="#tips-tricks">Tips &amp; Tricks</a><ul>
 <li><a class="reference internal" href="#windows-mysql-connector-pyhton-mysql-python">Windows 使用 mysql-connector-pyhton 替代 mysql_python</a></li>
+<li><a class="reference internal" href="#markdown2-markdown">使用 markdown2 转换 markdown 后存入数据库异常</a></li>
+<li><a class="reference internal" href="#model">监听 Model 字段变化</a></li>
 </ul>
 </li>
 </ul>
