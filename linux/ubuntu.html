@@ -109,6 +109,20 @@ sudo apt-get -y --auto-remove purge unity-asset-pool
 </div>
 <p>参考： <a class="reference external" href="http://garfield550.diandian.com/linux/00128">http://garfield550.diandian.com/linux/00128</a></p>
 </div>
+<div class="section" id="xfce4-application-finder">
+<h3>解决 Xfce4 Application Finder 启动缓慢的问题<a class="headerlink" href="#xfce4-application-finder" title="Permalink to this headline">¶</a></h3>
+<p><tt class="docutils literal"><span class="pre">xfce4-appfinder</span></tt> 在启动时非常缓慢，在终端中启动时能看到如下错误信息</p>
+<div class="highlight-python"><pre>(xfce4-appfinder:4167): xfce4-appfinder-CRITICAL **: Failed to open window: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.</pre>
+</div>
+<p>要解决此问题，禁用 appfinder server 就行</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xfce4</span><span class="o">-</span><span class="n">appfinder</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>如果要使用类似 Windows <tt class="docutils literal"><span class="pre">Win+R</span></tt> 的效果，可以运行</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">xfce4</span><span class="o">-</span><span class="n">appfinder</span> <span class="o">-</span><span class="n">c</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -126,6 +140,7 @@ sudo apt-get -y --auto-remove purge unity-asset-pool
 <li><a class="reference internal" href="#usb">制作USB启动盘</a></li>
 <li><a class="reference internal" href="#rpm-deb">rpm 包转 deb 包</a></li>
 <li><a class="reference internal" href="#unity-gnome-shell">卸载 Unity 安装 Gnome Shell</a></li>
+<li><a class="reference internal" href="#xfce4-application-finder">解决 Xfce4 Application Finder 启动缓慢的问题</a></li>
 </ul>
 </li>
 </ul>
