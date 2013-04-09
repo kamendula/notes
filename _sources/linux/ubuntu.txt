@@ -73,4 +73,4 @@ rpm 包转 deb 包
 
     xfce4-appfinder -c --disable-server
 
-
+参考： http://ubuntuforums.org/showthread.php?t=2031253
