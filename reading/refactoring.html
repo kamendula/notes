@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>高效能人士的七个习惯 &mdash; 笔记</title>
+    <title>Refactoring: Improving The Design of Existing Code &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../index.html" />
     <link rel="up" title="读书笔记" href="index.html" />
-    <link rel="prev" title="读书笔记" href="index.html" />
+    <link rel="prev" title="高效能人士的七个习惯" href="7habits.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -43,7 +43,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="index.html" title="读书笔记"
+          <a href="7habits.html" title="高效能人士的七个习惯"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">笔记</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">读书笔记</a> &raquo;</li> 
@@ -55,12 +55,20 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="habits-index">
-<span id="id1"></span><h1>高效能人士的七个习惯<a class="headerlink" href="#habits-index" title="Permalink to this headline">¶</a></h1>
-<p>豆瓣地址： <a class="reference external" href="http://book.douban.com/subject/1048007/">http://book.douban.com/subject/1048007/</a></p>
-<div class="section" id="id2">
-<h2>前言：变化的世界，不变的原则<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><strong>在人们心灵深处，没有比渴望理解更强烈的需要了——希望他人聆听、尊重、重视自己的声音，希望能影响别人。</strong></p>
+  <div class="section" id="refactoring-improving-the-design-of-existing-code">
+<span id="refactor-notes"></span><h1>Refactoring: Improving The Design of Existing Code<a class="headerlink" href="#refactoring-improving-the-design-of-existing-code" title="Permalink to this headline">¶</a></h1>
+<p>豆瓣地址： <a class="reference external" href="http://book.douban.com/subject/4262627/">http://book.douban.com/subject/4262627/</a></p>
+<img alt="http://img3.douban.com/mpic/s4157180.jpg" src="http://img3.douban.com/mpic/s4157180.jpg" />
+<div class="section" id="chaptor-1-refactoring-a-first-example">
+<h2>Chaptor 1. Refactoring, a First Example<a class="headerlink" href="#chaptor-1-refactoring-a-first-example" title="Permalink to this headline">¶</a></h2>
+<p><strong>A poorly designed system is hard to change. Hard because it is hard to figure out where the changes are needed.
+If it is hard to figure out what to change, there is a strong chance that the programmer will make a mistake
+and introduce bugs.</strong></p>
+<p>设计糟糕的系统很难做出改变，主要是很难找出哪里需要改变。如果一个系统很难改变，那很可能意味着程序将会犯错并且制造 Bug。</p>
+<hr class="docutils" />
+<p><strong>When you find you have to add a feature to a program, and the program&#8217;s code is not structured in a convenient way to
+add the feature, first refactor the program to make it easy to add the feature, then add the feature.</strong></p>
+<p>当因为代码结构的问题导致不能方便的给程序添加新特性时，那首先你得先重构代码结构，然后再添加新特性。</p>
 </div>
 </div>
 
@@ -72,8 +80,8 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">高效能人士的七个习惯</a><ul>
-<li><a class="reference internal" href="#id2">前言：变化的世界，不变的原则</a></li>
+<li><a class="reference internal" href="#">Refactoring: Improving The Design of Existing Code</a><ul>
+<li><a class="reference internal" href="#chaptor-1-refactoring-a-first-example">Chaptor 1. Refactoring, a First Example</a></li>
 </ul>
 </li>
 </ul>
@@ -81,13 +89,13 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">读书笔记</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">读书笔记</a></li>
+      <li>Previous: <a href="7habits.html" title="previous chapter">高效能人士的七个习惯</a></li>
   </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/reading/7habits.txt"
+    <li><a href="../_sources/reading/refactoring.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">

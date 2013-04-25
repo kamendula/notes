@@ -64,6 +64,12 @@
 <h1>SqlAlchemy 笔记<a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tips-tricks">
 <h2>Tips &amp; Tricks<a class="headerlink" href="#tips-tricks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>查看对象的子集中是否包含某条记录<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">q</span> <span class="o">=</span> <span class="n">Session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Articles</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Articles</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;tag_name&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="windows-mysql-connector-pyhton-mysql-python">
 <h3>Windows 使用 mysql-connector-pyhton 替代 mysql_python<a class="headerlink" href="#windows-mysql-connector-pyhton-mysql-python" title="Permalink to this headline">¶</a></h3>
 <p>mysql_python 在 windows 下极品的难装，于是比较好的方案就是，使用 mysql-connector-python 替代。</p>
@@ -125,6 +131,7 @@ ProgrammingError: (ProgrammingError) Failed processing pyformat-parameters; 'MyS
   <ul>
 <li><a class="reference internal" href="#">SqlAlchemy 笔记</a><ul>
 <li><a class="reference internal" href="#tips-tricks">Tips &amp; Tricks</a><ul>
+<li><a class="reference internal" href="#id1">查看对象的子集中是否包含某条记录</a></li>
 <li><a class="reference internal" href="#windows-mysql-connector-pyhton-mysql-python">Windows 使用 mysql-connector-pyhton 替代 mysql_python</a></li>
 <li><a class="reference internal" href="#markdown2-markdown">使用 markdown2 转换 markdown 后存入数据库异常</a></li>
 <li><a class="reference internal" href="#model">监听 Model 字段变化</a></li>
