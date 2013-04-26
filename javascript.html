@@ -78,6 +78,15 @@
 </div>
 <p>参考： <a class="reference external" href="http://stackoverflow.com/a/1335347/260793">http://stackoverflow.com/a/1335347/260793</a></p>
 </div>
+<div class="section" id="id2">
+<h3>页面刷新前弹出确认对话框<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>在 <cite>onbeforeunload</cite> 的事件中，不能够调用 <cite>alert</cite> 等对话框，只能返回一个字符串，该字符串会显示在确定对话框中。</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">onbeforeunload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;确认要退出吗？&#39;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -92,6 +101,7 @@
 <li><a class="reference internal" href="#">JavaScript 笔记</a><ul>
 <li><a class="reference internal" href="#tips-tricks">Tips &amp; Tricks</a><ul>
 <li><a class="reference internal" href="#id1">获取当前选中内容的元素节点</a></li>
+<li><a class="reference internal" href="#id2">页面刷新前弹出确认对话框</a></li>
 </ul>
 </li>
 </ul>
