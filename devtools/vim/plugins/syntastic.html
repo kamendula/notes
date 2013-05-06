@@ -1,0 +1,167 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Syntastic 笔记 &mdash; 笔记</title>
+    
+    <link rel="stylesheet" href="../../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="笔记" href="../../../index.html" />
+    <link rel="up" title="VIM 插件" href="index.html" />
+    <link rel="next" title="操作系统" href="../../../os/index.html" />
+    <link rel="prev" title="VIM 插件" href="index.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../os/index.html" title="操作系统"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="VIM 插件"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">笔记</a> &raquo;</li>
+          <li><a href="../../index.html" >开发工具笔记</a> &raquo;</li>
+          <li><a href="../index.html" >VIM笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">VIM 插件</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="syntastic">
+<h1>Syntastic 笔记<a class="headerlink" href="#syntastic" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>忽略指定类型文件的语法检查<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>我在编辑 Sphinx 的 rst 文件时，经常会 <cite>Unknown directive type &#8220;toctree&#8221;</cite> 的错误，因为没有合适的 checker 所以干脆忽略
+掉 rst 格式文件的语法检查，但很可惜，google 出来的大部分结果都已经过时了。</p>
+<p>网上给的解决方法都是设置 <tt class="docutils literal"><span class="pre">syntastic_disabled_filetypes</span></tt> 变量，但根本不起作用，这个变量可能已经过时了，它在很早之前
+的版本中出现过</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">1.1.0 [codenamed: tpimp]</div>
+<div class="line-block">
+<div class="line">...</div>
+<div class="line">- Add an option to specifiy syntax checkers that should be disabled by</div>
+<div class="line-block">
+<div class="line">default. See :help <tt class="docutils literal"><span class="pre">syntastic_disabled_filetypes</span></tt>.</div>
+</div>
+<div class="line">...</div>
+</div>
+</div>
+</div></blockquote>
+<p>仔细阅读文档后，找到了新的解决方法</p>
+<div class="highlight-vim"><div class="highlight"><pre><span class="k">let</span> <span class="k">g</span>:syntastic_mode_map <span class="p">=</span> { <span class="s1">&#39;passive_filetypes&#39;</span>: [<span class="s1">&#39;rst&#39;</span>] }
+</pre></div>
+</div>
+<p>关于 <tt class="docutils literal"><span class="pre">syntastic_mode_map</span></tt> 在文档中有很详尽的解释</p>
+<div class="highlight-python"><pre>The option should be set to something like: &gt;
+
+    let g:syntastic_mode_map = { 'mode': 'active',
+                               \ 'active_filetypes': ['ruby', 'php'],
+                               \ 'passive_filetypes': ['puppet'] }
+&lt;
+
+"mode" can be mapped to one of two values - "active" or "passive". When set to
+active, syntastic does automatic checking whenever a buffer is saved or
+initially opened.  When set to "passive" syntastic only checks when the user
+calls :SyntasticCheck.
+
+The exceptions to these rules are defined with "active_filetypes" and
+"passive_filetypes". In passive mode, automatic checks are still done
+for all filetypes in the "active_filetypes" array. In active mode,
+automatic checks are not done for any filetypes in the
+"passive_filetypes" array.</pre>
+</div>
+<p>也就是说， <tt class="docutils literal"><span class="pre">passive_filetypes</span></tt> 中包含的文件类型并不会主动的执行语法检察，除非你手动执行 <tt class="docutils literal"><span class="pre">:SyntasticCheck</span></tt>
+既不会给出烦人的提示，在需要时，随时还可以使用，真是方便。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Syntastic 笔记</a><ul>
+<li><a class="reference internal" href="#id1">忽略指定类型文件的语法检查</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">开发工具笔记</a><ul>
+  <li><a href="../index.html">VIM笔记</a><ul>
+  <li><a href="index.html">VIM 插件</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">VIM 插件</a></li>
+      <li>Next: <a href="../../../os/index.html" title="next chapter">操作系统</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/devtools/vim/plugins/syntastic.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, greatghoul.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

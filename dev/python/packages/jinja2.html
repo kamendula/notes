@@ -1,0 +1,137 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Jinaja2 笔记 &mdash; 笔记</title>
+    
+    <link rel="stylesheet" href="../../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="笔记" href="../../../index.html" />
+    <link rel="up" title="Python Packages" href="index.html" />
+    <link rel="next" title="SqlAlchemy 笔记" href="sqlalchemy.html" />
+    <link rel="prev" title="Flask 笔记" href="flask.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sqlalchemy.html" title="SqlAlchemy 笔记"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="flask.html" title="Flask 笔记"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">笔记</a> &raquo;</li>
+          <li><a href="../../index.html" >开发语言和框架</a> &raquo;</li>
+          <li><a href="../index.html" >Python开发笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Python Packages</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="jinaja2">
+<h1>Jinaja2 笔记<a class="headerlink" href="#jinaja2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>基本语法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>控制语句不产生空行<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>通常，使用 {% ... %} 这样的控制语句会产生一些空行，虽然以于用户来说，这些空行对网页的功能并没有什么影响，但一些有洁癖的人来说，是不能容忍的。 Jiaja2 提供了忽略空行的方法</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">for</span> <span class="nv">i</span> <span class="k">in</span> <span class="nv">some_array</span> -<span class="cp">%}</span><span class="x"></span>
+<span class="x">    do something with &quot;</span><span class="cp">{{</span> <span class="nv">i</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="cp">{%</span> <span class="k">end</span> <span class="nv">for</span> -<span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Jinaja2 笔记</a><ul>
+<li><a class="reference internal" href="#id1">基本语法</a><ul>
+<li><a class="reference internal" href="#id2">控制语句不产生空行</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">开发语言和框架</a><ul>
+  <li><a href="../index.html">Python开发笔记</a><ul>
+  <li><a href="index.html">Python Packages</a><ul>
+      <li>Previous: <a href="flask.html" title="previous chapter">Flask 笔记</a></li>
+      <li>Next: <a href="sqlalchemy.html" title="next chapter">SqlAlchemy 笔记</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/dev/python/packages/jinja2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, greatghoul.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>
