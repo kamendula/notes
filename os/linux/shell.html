@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python技巧 &mdash; 笔记</title>
+    <title>Shell开发笔记 &mdash; 笔记</title>
     
     <link rel="stylesheet" href="../../_static/flasky.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -24,9 +24,9 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="笔记" href="../../index.html" />
-    <link rel="up" title="Python开发笔记" href="index.html" />
-    <link rel="next" title="Python Packages" href="packages/index.html" />
-    <link rel="prev" title="Python开发笔记" href="index.html" />
+    <link rel="up" title="Linux笔记" href="index.html" />
+    <link rel="next" title="Ubuntu笔记" href="ubuntu.html" />
+    <link rel="prev" title="Linux 常见问题" href="common.html" />
    
   
   <link media="only screen and (max-device-width: 480px)" href="../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
@@ -43,14 +43,14 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="packages/index.html" title="Python Packages"
+          <a href="ubuntu.html" title="Ubuntu笔记"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Python开发笔记"
+          <a href="common.html" title="Linux 常见问题"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">笔记</a> &raquo;</li>
-          <li><a href="../index.html" >开发语言和框架</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Python开发笔记</a> &raquo;</li> 
+          <li><a href="../index.html" >操作系统</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Linux笔记</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,20 +59,34 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="python">
-<h1>Python技巧<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dict">
-<h2>dict转对象<a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s">&#39;new&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;18da&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">name</span>
-<span class="go">&#39;18da&#39;</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">UserDict</span> <span class="kn">import</span> <span class="n">UserDict</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">UserDict</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;18da&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span><span class="o">.</span><span class="n">name</span>
-<span class="go">&#39;18da&#39;</span>
-</pre></div>
+  <div class="section" id="shell">
+<h1>Shell开发笔记<a class="headerlink" href="#shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>基础语法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>条件判断语法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell"><pre>if   [ expression1 ]; then
+    # ...
+elif [ !expression2 ]; then
+    # ...
+else
+    # ...
+fi</pre>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>参数处理<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>shell 中以 <tt class="docutils literal"><span class="pre">$n</span></tt> 来接收终端传递的参数，比如 <tt class="docutils literal"><span class="pre">$1</span></tt> 表示第一个参数</p>
+<p>判断参数是否相等</p>
+<div class="highlight-shell"><pre>if   [ "$1" = "value1" ]; then
+    # do something
+fi</pre>
+</div>
+<p>判断参数是否为空字符串或者 null</p>
+<div class="highlight-shell"><pre>if [ -z "$1" ]; then
+    # do something
+fi</pre>
 </div>
 </div>
 </div>
@@ -85,25 +99,29 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Python技巧</a><ul>
-<li><a class="reference internal" href="#dict">dict转对象</a></li>
+<li><a class="reference internal" href="#">Shell开发笔记</a><ul>
+<li><a class="reference internal" href="#id1">基础语法</a><ul>
+<li><a class="reference internal" href="#id2">条件判断语法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">参数处理</a></li>
 </ul>
 </li>
 </ul>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-  <li><a href="../index.html">开发语言和框架</a><ul>
-  <li><a href="index.html">Python开发笔记</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Python开发笔记</a></li>
-      <li>Next: <a href="packages/index.html" title="next chapter">Python Packages</a></li>
+  <li><a href="../index.html">操作系统</a><ul>
+  <li><a href="index.html">Linux笔记</a><ul>
+      <li>Previous: <a href="common.html" title="previous chapter">Linux 常见问题</a></li>
+      <li>Next: <a href="ubuntu.html" title="next chapter">Ubuntu笔记</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
 </ul>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/dev/python/tips.txt"
+    <li><a href="../../_sources/os/linux/shell.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
