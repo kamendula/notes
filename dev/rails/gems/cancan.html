@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CanCan Notes &mdash; 笔记</title>
+    
+    <link rel="stylesheet" href="../../../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="笔记" href="../../../index.html" />
+    <link rel="up" title="RubyGems Notes" href="index.html" />
+    <link rel="next" title="Authlogic Notes" href="authlogic.html" />
+    <link rel="prev" title="Devise Notes" href="devise.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../../../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="authlogic.html" title="Authlogic Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="devise.html" title="Devise Notes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">笔记</a> &raquo;</li>
+          <li><a href="../../index.html" >开发语言和框架</a> &raquo;</li>
+          <li><a href="../index.html" >Rails开发笔记</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">RubyGems Notes</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cancan-notes">
+<h1>CanCan Notes<a class="headerlink" href="#cancan-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>忽略父控制器的验证<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>将 <tt class="docutils literal"><span class="pre">skip_load_and_authorize_resource</span></tt> 设置在 <tt class="docutils literal"><span class="pre">ApplicationController</span></tt> 中虽然方便，但是对于一些特殊的控制器，需要单独设置验证选项时，就需要忽略父控制器的验证了。</p>
+<p>CanCan 在验证时，需要加载一个 Model 用于检测权限，默认会检测控制器同名的 Model，如果控制器的 Model 不存在，可以通过如下方式指定</p>
+<div class="highlight-python"><pre>skip_load_and_authorize_resource # 忽略父控制器验证
+load_and_authorize_resource :class =&gt; Customer</pre>
+</div>
+</div>
+<div class="section" id="action">
+<h3>Action组合别名处理<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
+<p>一般对于成组出现的权限，没有必要为每一个 action 都定一个 permission，
+可以在 <tt class="docutils literal"><span class="pre">app/models/ability.rb</span></tt> 中这样做</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Ability</span>
+  <span class="kp">include</span> <span class="ss">CanCan</span><span class="p">:</span><span class="ss">:Ability</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">alias_action</span> <span class="ss">:check</span><span class="p">,</span> <span class="ss">:approve</span><span class="p">,</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="ss">:approve</span>
+    <span class="c1"># ..</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>然后在使用时可以直接</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">can</span> <span class="ss">:merge</span><span class="p">,</span> <span class="no">Customer</span>
+<span class="n">can?</span> <span class="ss">:merge</span><span class="p">,</span> <span class="no">Customer</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="model-controller">
+<h3>无对应 Model 的 Controller 的权限设置<a class="headerlink" href="#model-controller" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">ToolsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">authorize_resource</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+<span class="k">end</span>
+
+<span class="c1"># in Ability</span>
+<span class="n">can</span> <span class="ss">:manage</span><span class="p">,</span> <span class="ss">:tool</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>CanCan实作角色权限设计的最佳实践 <a class="reference external" href="http://blog.xdite.net/posts/2012/07/30/cancan-rule-engine-authorization-based-library-1/">其1</a> <a class="reference external" href="http://blog.xdite.net/posts/2012/07/30/cancan-rule-engine-authorization-based-library-2/">其2</a> <a class="reference external" href="http://blog.xdite.net/posts/2012/07/30/cancan-rule-engine-authorization-based-library-3/">其3</a></li>
+<li><a class="reference external" href="https://github.com/ryanb/cancan/wiki/Abilities-in-Database">Abilities-in-Database</a></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CanCan Notes</a><ul>
+<li><a class="reference internal" href="#tips">Tips</a><ul>
+<li><a class="reference internal" href="#id1">忽略父控制器的验证</a></li>
+<li><a class="reference internal" href="#action">Action组合别名处理</a></li>
+<li><a class="reference internal" href="#model-controller">无对应 Model 的 Controller 的权限设置</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">开发语言和框架</a><ul>
+  <li><a href="../index.html">Rails开发笔记</a><ul>
+  <li><a href="index.html">RubyGems Notes</a><ul>
+      <li>Previous: <a href="devise.html" title="previous chapter">Devise Notes</a></li>
+      <li>Next: <a href="authlogic.html" title="next chapter">Authlogic Notes</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../../_sources/dev/rails/gems/cancan.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2013, greatghoul.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>
